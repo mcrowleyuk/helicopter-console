@@ -4,13 +4,13 @@
 
 SeaCopter::SeaCopter()
 {
-	//Nothing
+	//Nothing for now
 }
 
 SeaCopter::SeaCopter(SeaCopter& refSeaCopter)
 {
 	std::cout << "In the derived Copy Constructor\n";
-//	return *this; // HACK HACK HACK!
+
 }
 
 SeaCopter::~SeaCopter()
@@ -22,8 +22,6 @@ const bool SeaCopter::Start() const
 {
 
 	std::cout << "Starting pre checks.....\n";
-
-	std::cout << "Starting rotas.....\n";
 
 	std::cout << "..........\n";
 

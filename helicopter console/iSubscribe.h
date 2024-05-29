@@ -14,11 +14,11 @@ public:
 	void Detach() {;}
 	virtual ~iSubscribe();
 
-	// temp make public
+	// temp make public - would not normally ever do this!!!!!!!!
 	std::vector<CopterObserver> vObservers;
 
 private:
 
-	//std::vector<CopterObserver> vObservers;
+	//std::vector<CopterObserver> vObservers; // to put back
 };
 
