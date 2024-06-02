@@ -36,13 +36,14 @@ void iSubscribe::Notify()
 void iSubscribe::NotifyGo()
 {
 
-	std::vector<CopterObserver>::iterator itr;
+//	std::vector<CopterObserver>::iterator itr;
 
 		
-	for (itr = vObservers.begin(); itr != vObservers.end(); ++itr)
+	//for (itr = vObservers.begin(); itr != vObservers.end(); ++itr)
+	
+	for (CopterObserver& itr : vObservers)   // time to start working with 11,14,17....
 	{
-		
-		if ((*itr).update())
+		if (itr.update())
 		{
 			std::cout << "Update Completed" << endl;
 		}

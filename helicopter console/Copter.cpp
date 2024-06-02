@@ -18,9 +18,7 @@ Copter::~Copter()
 
 	std::cout << "\nIn the base destructor\n";
 
-	std::list<widget>::iterator myiter;
-
-	myiter = listWidgets.begin();
+	std::list<widget>::iterator myiter = listWidgets.begin();
 
 
 	// DEALLOC ANY SPACE USED BY LIST
@@ -53,31 +51,39 @@ Copter& Copter::operator=(Copter& myCopter)
 {
 
 	// To do
-	std::list<widget>::iterator myiter;
-	
-	myiter = listWidgets.begin();
+
+	if (this != &myCopter)
+	{
+
+		std::list<widget>::iterator myiter = listWidgets.begin();
+
+		// DEALLOC ANY SPACE USED BY LIST
+
+		while (listWidgets.begin() != listWidgets.end())
+		{
+			// calls destructor on each object in list
+			listWidgets.pop_back();
+		}
 
 
-	// DEALLOC ANY SPACE USED BY LIST
+		// DEALLOC ANY SPACE USED BY LIST
 
-	listWidgets.clear();
+		listWidgets.clear();
 
-	// REASSIGN LIST OF WIDGETS FROM R to L
-	listWidgets = myCopter.listWidgets;
+		// REASSIGN LIST OF WIDGETS FROM R to L
+		listWidgets = myCopter.listWidgets;
 
+		
+	};
 	return *this;
-
 };
 
 void Copter::AddWidget()
 {
-	std::list<widget>::iterator myiter;
-
-	myiter = listWidgets.begin();
 	std::cout << "Creating a widget";
 	ptrWidget = new widget();
-	std::cout << "Adding a widget";
-	listWidgets.insert(myiter,*ptrWidget);
+	std::cout << "Adding a widget to end of list";
+	listWidgets.push_back(*ptrWidget);   //or could insert with an iter (but less efficient)
 }
 
 

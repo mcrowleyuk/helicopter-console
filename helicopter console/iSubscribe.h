@@ -11,7 +11,7 @@ public:
 	void Attach(CopterObserver) {;}
 	void Notify(); // will call update on each observer
 	void NotifyGo();
-	void Detach() {;}
+	void Detach(CopterObserver) {;} //this needs to remove the passed Copter from the Vector list
 	virtual ~iSubscribe();
 
 	// temp make public - would not normally ever do this!!!!!!!!

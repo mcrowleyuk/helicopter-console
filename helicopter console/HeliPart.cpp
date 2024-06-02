@@ -1,7 +1,6 @@
 #include "HeliPart.h"
 
 
-
 HeliPart::HeliPart():strPartName(strDefault)
 {
 	iPartNum = 0;
