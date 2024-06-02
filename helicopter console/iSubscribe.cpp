@@ -41,7 +41,7 @@ void iSubscribe::NotifyGo()
 		
 	//for (itr = vObservers.begin(); itr != vObservers.end(); ++itr)
 	
-	for (CopterObserver& itr : vObservers)   // time to start working with 11,14,17....
+	for (CopterObserver& itr : vObservers)   // time to start working with 11,14,17.... range based loop
 	{
 		if (itr.update())
 		{
@@ -52,5 +52,23 @@ void iSubscribe::NotifyGo()
 			std::cout << "Update Failed" << endl;
 		}
 	}
+
+}
+
+void iSubscribe::Detach(const CopterObserver& myObserver)
+{ 
+	// search vector for a match
+
+	std::vector<CopterObserver>::iterator itr;
+
+	for (itr = vObservers.begin(); itr != vObservers.end(); ++itr)
+	{
+		/*if ((*itr) == myObserver) // will override the operator== to handle this efficiently
+		{
+			vObservers.erase(itr);
+		}*/
+	}
+
+	
 
 }
