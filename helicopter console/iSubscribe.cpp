@@ -30,7 +30,7 @@ void iSubscribe::Notify()
 
 	//thread myThread(&iSubscribe::NotifyGo);
 
-	myThread.join();
+	myThread.join();  ///rejoins main thread
 }
 
 void iSubscribe::NotifyGo()

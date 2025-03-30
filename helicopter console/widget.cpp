@@ -16,7 +16,15 @@ widget::~widget()
 	//delete widgetarray;
 }
 
-widget& widget::operator==(widget& ref)
+bool widget::operator==(widget& ref)
 {
-	return *this;
+	if (ref == *this)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
 }

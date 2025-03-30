@@ -5,6 +5,7 @@
 SeaCopter::SeaCopter()
 {
 	//Nothing for now
+	std::cout << "In the derived constructor\n";
 }
 
 SeaCopter::SeaCopter(SeaCopter& refSeaCopter)
@@ -21,7 +22,7 @@ SeaCopter::~SeaCopter()
 const bool SeaCopter::Start() const
 {
 
-	std::cout << "Starting pre checks.....\n";
+	std::cout << "Starting pre checks in Sea Copter.....\n";
 
 	std::cout << "..........\n";
 

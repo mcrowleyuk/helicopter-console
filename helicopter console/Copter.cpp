@@ -7,6 +7,7 @@ class Copter;
 Copter::Copter()
 {
 	ptrWidget = NULL;
+	std::cout << "In the base constructor\n";
 };
 
 
@@ -22,16 +23,16 @@ Copter::~Copter()
 
 
 	// DEALLOC ANY SPACE USED BY LIST
-
+	std::cout << "\n about to pop list\n";
+	/*
 	while (listWidgets.begin()!=listWidgets.end())
 	{
 		// calls destructor on each object in list
 		listWidgets.pop_back();
-	}
-
+	}*/
+	
 	std::cout << "About to clear list of widgets";
 	// This calls the destructor for each widget 
-	// lisy should be empty by this point anyway.
 	listWidgets.clear();
 	std::cout << "Cleared list of widgets";
 
@@ -64,10 +65,7 @@ Copter& Copter::operator=(Copter& myCopter)
 			// calls destructor on each object in list
 			listWidgets.pop_back();
 		}
-
-
-		// DEALLOC ANY SPACE USED BY LIST
-
+#
 		listWidgets.clear();
 
 		// REASSIGN LIST OF WIDGETS FROM R to L

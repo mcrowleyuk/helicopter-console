@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "SeaCopter.h"
+#include "Copter.h"
 #include <thread>
 #include <mutex>
 
@@ -10,18 +11,22 @@ void Go()
 {
 
 	//dynammic bind base to derived
-	Copter myCopter;
+	Copter* myCopter = new SeaCopter();
 
-	myCopter.Start();
+	myCopter->Start();
 
-	myCopter.AddWidget(); // each widget added to std::list
+	myCopter->AddWidget(); // each widget added to std::list
 
-	myCopter.AddWidget();
+	myCopter->AddWidget();
 
-	myCopter.AddWidget();
+	myCopter->AddWidget();
 
+
+	delete myCopter;
+
+	/*
 	std::cout << "Before second copy constructor";
-	Copter MyCopter2(myCopter);
+	Copter MyCopter2(*myCopter);
 
 
 	MyCopter2.Start();
@@ -34,17 +39,20 @@ void Go()
 
 	std::cout << "Finished!\n";
 
-
+*/
 }
 
 
 int main()
 {
-	std::cout << "Hello World!\n";
+
+	std::cout << sizeof(int);
+
+	std::cout << "\nHello World!\n";
 
 	std::mutex myMutex;
 
-	myMutex.lock();
+	myMutex.lock(); //lock shared resources
 
 	std::thread myThread(Go);
 
