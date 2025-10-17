@@ -2,9 +2,9 @@
 
 
 
-CopterObserver::CopterObserver()
+/*CopterObserver::CopterObserver()
 {
-}
+}*/
 
 
 CopterObserver::~CopterObserver()

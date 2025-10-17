@@ -16,17 +16,21 @@ public:
 
 	// Copy Constructor
 
-	Copter(Copter& myCopter);
+	Copter(const Copter& myCopter);
 
 	// Assignment Operator
 
-	Copter& operator=(Copter& myCopter);
+	Copter& operator=(const Copter& myCopter);
 
 	// Destructor
 
 	virtual ~Copter();
 
-	Copter(Copter&&) = default; // Move Constructor allow default
+	void Attach(const CopterObserver&) override;
+
+	void Detach(const CopterObserver&) override;
+
+	Copter(Copter&&) = default; // Move Constructor allow default && = R Value Reference
 
 	Copter& operator=(Copter&& myCopter) = default; // Move assignment operator - allow default
 

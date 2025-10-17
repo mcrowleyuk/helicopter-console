@@ -18,28 +18,15 @@ Copter::~Copter()
 	//delete the std::list
 
 	std::cout << "\nIn the base destructor\n";
-
-	std::list<widget>::iterator myiter = listWidgets.begin();
-
-
-	// DEALLOC ANY SPACE USED BY LIST
-	std::cout << "\n about to pop list\n";
-	/*
-	while (listWidgets.begin()!=listWidgets.end())
-	{
-		// calls destructor on each object in list
-		listWidgets.pop_back();
-	}*/
 	
 	std::cout << "About to clear list of widgets";
 	// This calls the destructor for each widget 
-	listWidgets.clear();
-	std::cout << "Cleared list of widgets";
+	listWidgets.clear(); // removes all elements and calls destructor on each
 
 };
 
 
-Copter::Copter(Copter& myCopter)
+Copter::Copter(const Copter& myCopter)
 {
 	// To do
 	//return *this;
@@ -48,7 +35,7 @@ Copter::Copter(Copter& myCopter)
 
 };
 
-Copter& Copter::operator=(Copter& myCopter)
+Copter& Copter::operator=(const Copter& myCopter)
 {
 
 	// To do
@@ -60,12 +47,12 @@ Copter& Copter::operator=(Copter& myCopter)
 
 		// DEALLOC ANY SPACE USED BY LIST
 
-		while (listWidgets.begin() != listWidgets.end())
+		/*while (listWidgets.begin() != listWidgets.end())
 		{
 			// calls destructor on each object in list
 			listWidgets.pop_back();
-		}
-#
+		}*/  // THIS IS NOT NECCESARY AS list.clear() does this anyway
+
 		listWidgets.clear();
 
 		// REASSIGN LIST OF WIDGETS FROM R to L
@@ -82,6 +69,23 @@ void Copter::AddWidget()
 	ptrWidget = new widget();
 	std::cout << "Adding a widget to end of list";
 	listWidgets.push_back(*ptrWidget);   //or could insert with an iter (but less efficient)
+}
+
+void Copter::Attach(const CopterObserver& CoptObservr) 
+{
+	// Subscribe a copter observer for later notiication
+
+	vObservers.push_back(CoptObservr);
+	
+}
+
+void Copter::Detach(const CopterObserver& CoptObservr)
+{
+	vObservers.erase(
+	std::remove(vObservers.begin(), vObservers.end(), CoptObservr),
+		vObservers.end()
+		);
+
 }
 
 
