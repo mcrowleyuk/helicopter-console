@@ -14,12 +14,8 @@ public:
 	virtual void Detach(const CopterObserver&) = 0; //this needs to remove the passed Copter from the Vector list
 	virtual ~iSubscribe();
 
-	
-	// temp make public - would not normally ever do this!!!!!!!!
-//	std::vector<CopterObserver> vObservers;
 
 protected:
-
 
 	std::vector<CopterObserver> vObservers;
 

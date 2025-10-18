@@ -13,14 +13,11 @@ Copter::Copter()
 
 Copter::~Copter()
 {
-	// TO DO 
-
-	//delete the std::list
-
+	
 	std::cout << "\nIn the base destructor\n";
 	
 	std::cout << "About to clear list of widgets";
-	// This calls the destructor for each widget 
+	// This clears the list AND calls the destructor for each widget 
 	listWidgets.clear(); // removes all elements and calls destructor on each
 
 };
@@ -45,7 +42,6 @@ Copter& Copter::operator=(const Copter& myCopter)
 
 		std::list<widget>::iterator myiter = listWidgets.begin();
 
-		// DEALLOC ANY SPACE USED BY LIST
 
 		/*while (listWidgets.begin() != listWidgets.end())
 		{
