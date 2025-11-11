@@ -4,6 +4,7 @@
 #include <iostream>
 #include <thread>
 #include <mutex>
+#include <vector>
 
 using namespace std;
 
@@ -39,7 +40,6 @@ void iSubscribe::NotifyGo()
 //	std::vector<CopterObserver>::iterator itr;
 
 		
-	//for (itr = vObservers.begin(); itr != vObservers.end(); ++itr)
 	
 	for (CopterObserver& itr : vObservers)   // time to start working with 11,14,17.... range based loop
 	{
@@ -55,20 +55,14 @@ void iSubscribe::NotifyGo()
 
 }
 
-void iSubscribe::Detach(const CopterObserver& myObserver)
-{ 
-	// search vector for a match
-
-	std::vector<CopterObserver>::iterator itr;
-
-	for (itr = vObservers.begin(); itr != vObservers.end(); ++itr)
+void iSubscribe::Detach(const CopterObserver& rObserver_to_detach)
+{
+	for (auto itr = vObservers.begin(); itr != vObservers.end(); ++itr) // need to use iterator rather than (for each :) - as needed to pass itr to ease.
 	{
-		/*if ((*itr) == myObserver) // will override the operator== to handle this efficiently
+		if (*itr == rObserver_to_detach)
 		{
 			vObservers.erase(itr);
-		}*/
+			break; // assumes only attached once
+		}
 	}
-
-	
-
 }

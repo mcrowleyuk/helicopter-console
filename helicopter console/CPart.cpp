@@ -1,11 +1,5 @@
-//#include "CTemplatePart.h"
+//#include "CPart.h"
 
-//template <class T>
-/*CTemplatePart::CTemplatePart()
-{
-}
+// Redundant as defined as template class in header file
 
 
-CTemplatePart::~CTemplatePart()
-{
-}*/
