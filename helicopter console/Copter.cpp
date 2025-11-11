@@ -6,7 +6,7 @@ class Copter;
 
 Copter::Copter()
 {
-	ptrWidget = NULL;
+	//ptrWidget = NULL;
 	std::cout << "In the base constructor\n";
 };
 
@@ -43,15 +43,8 @@ Copter& Copter::operator=(const Copter& myCopter)
 		std::list<widget>::iterator myiter = listWidgets.begin();
 
 
-		/*while (listWidgets.begin() != listWidgets.end())
-		{
-			// calls destructor on each object in list
-			listWidgets.pop_back();
-		}*/  // THIS IS NOT NECCESARY AS list.clear() does this anyway
-
 		listWidgets.clear();
 
-		// REASSIGN LIST OF WIDGETS FROM R to L
 		listWidgets = myCopter.listWidgets;
 
 		
@@ -62,9 +55,9 @@ Copter& Copter::operator=(const Copter& myCopter)
 void Copter::AddWidget()
 {
 	std::cout << "Creating a widget";
-	ptrWidget = new widget();
+	uptrWidget = std::make_unique<widget>();
 	std::cout << "Adding a widget to end of list";
-	listWidgets.push_back(*ptrWidget);   //or could insert with an iter (but less efficient)
+	listWidgets.push_back(*uptrWidget);   //or could insert with an iter (but less efficient)
 }
 
 void Copter::Attach(const CopterObserver& CoptObservr) 
@@ -92,3 +85,13 @@ const bool Copter::Start() const
 	return true;
 }
 
+void Copter::AddPart(int& riPart, std::string& strPartName) {
+
+	uptrHelipart = std::make_unique<HeliPart>(riPart, strPartName);
+
+
+	std::pair<int, std::string> pairPart(riPart, strPartName);
+
+	mapHeliParts.insert(pairPart);
+
+}

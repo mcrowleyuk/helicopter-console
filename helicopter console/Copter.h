@@ -26,36 +26,32 @@ public:
 
 	virtual ~Copter();
 
-	void Attach(const CopterObserver&) override;
-
-	void Detach(const CopterObserver&) override;
-
+	
 	Copter(Copter&&) = default; // Move Constructor allow default && = R Value Reference
 
 	Copter& operator=(Copter&& myCopter) = default; // Move assignment operator - allow default
 
 
+	// Subscribe, Notify overrides
+
+	void Attach(const CopterObserver&) override;
+
+	void Detach(const CopterObserver&) override;
+	
+	// Main Methods
 
 	virtual const bool Start() const;
 
 	void AddWidget();
 	
-	void AddPart(int& riPart, std::string& strPartName) {
-
-		ptrHelipart = std::make_unique<HeliPart>(HeliPart(riPart, strPartName));
-
-
-		std::pair<int, std::string> pairPart(riPart, strPartName);
-
-		mapHeliParts.insert(pairPart);
-
-	}
+	void AddPart(int& riPart, std::string& strPartName);
+	
 private:
 
-	widget* ptrWidget;
+	std::unique_ptr<widget> uptrWidget; 
 	std::list<widget> listWidgets;
 
-	std::unique_ptr<HeliPart> ptrHelipart;
+	std::unique_ptr<HeliPart> uptrHelipart;
 	std::map<int, std::string> mapHeliParts;
 	
 };
